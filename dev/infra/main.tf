@@ -1,11 +1,6 @@
 module "oci-infra" {
-  source             = "git::https://github.com/mdefenders/terraform-oci-infra.git?ref=v1.0.0"
-  fingerprint        = var.fingerprint
-  private_key_path   = var.private_key_path
-  region             = var.region
+  source             = "git::https://github.com/mdefenders/terraform-oci-infra.git?ref=v1.0.1"
   tenancy_ocid       = var.tenancy_ocid
-  user_ocid          = var.user_ocid
-  vcn_display_name   = var.vcn_display_name
   private_cidr_block = var.private_cidr_block
   public_cidr_block  = var.public_cidr_block
   vcn_id             = module.vcn.vcn_id
