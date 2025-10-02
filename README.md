@@ -34,10 +34,6 @@ graph TD
   secrets --> db
 ```
 
-Embedded SVG (exported to `docs/dependency-graph.svg`):
-
-![Terraform Root Module Dependency Graph](docs/dependency-graph.svg)
-
 Apply order (topological): `infra → k8s → secrets → db / cicd`
 
 Notes:
