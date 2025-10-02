@@ -1,8 +1,10 @@
 module "k8s-vault" {
-  source         = "git::https://github.com/mdefenders/terraform-oci-k8s-vault.git?ref=v1.0.0"
-  compartment_id = data.terraform_remote_state.infra.outputs.tenancy_ocid
-  vault_name     = var.vault_name
-  cluster_ocid   = data.terraform_remote_state.k8s.outputs.cluster-OCID
+  source               = "git::https://github.com/mdefenders/terraform-oci-k8s-vault.git?ref=v1.0.1"
+  compartment_id       = data.terraform_remote_state.infra.outputs.tenancy_ocid
+  vault_name           = var.vault_name
+  cluster_ocid         = data.terraform_remote_state.k8s.outputs.cluster-OCID
+  dynamic_group_name   = var.dynamic_group_name
+  identity_policy_name = var.identity_policy_name
 }
 
 resource "oci_kms_key" "itde_key" {
