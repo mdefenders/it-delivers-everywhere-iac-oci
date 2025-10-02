@@ -1,0 +1,1 @@
+../common/shared_variables.tf
