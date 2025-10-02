@@ -17,6 +17,37 @@ Stack (dir under `it-delivers-everywhere/oci/envs/dev`) : Purpose
 
 All state is stored in a single OCI Object Storage bucket with logical separation by object key prefix.
 
+## Cross-Stack Dependency Graph
+
+Visual representation of remote state consumption among Terraform root modules (dev environment):
+
+Mermaid diagram (renders on GitHub):
+
+```mermaid
+graph TD
+  infra[infra] --> k8s[k8s]
+  infra --> secrets
+  infra --> db
+  infra --> cicd
+  k8s --> secrets
+  k8s --> cicd
+  secrets --> db
+```
+
+Embedded SVG (exported to `docs/dependency-graph.svg`):
+
+![Terraform Root Module Dependency Graph](docs/dependency-graph.svg)
+
+Apply order (topological): `infra → k8s → secrets → db / cicd`
+
+Notes:
+
+- `secrets` currently depends on both `infra` and `k8s`. If that coupling is unintended, remove the
+  `data.terraform_remote_state.k8s` block from `secrets/backends.tf` (and any usages) to allow provisioning secrets
+  earlier.
+- `db` requires outputs from `secrets` (and transitively `infra`).
+- `cicd` consumes infra and k8s only; it can be applied in parallel with `db` once prerequisites are satisfied.
+
 ## Repository Layout
 
 ```
@@ -114,11 +145,11 @@ terraform apply plan.out
 
 Then provision dependent stacks (order matters):
 
-1. `infra`
-2. `secrets` (if Vault / secret infra required before DB)
-3. `k8s`
-4. `db`
-5. `cicd` (future)
+1. infra
+2. k8s
+3. secrets
+4. db (after secrets)
+5. cicd (after k8s; can run parallel to db once prereqs met)
 
 ## Adding a New Stack
 
