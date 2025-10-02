@@ -25,7 +25,8 @@ output "all-availability-domains-in-your-tenancy" {
   value = data.oci_identity_availability_domains.ads.availability_domains
 }
 output "tenancy_ocid" {
-  value = var.tenancy_ocid
+  value     = var.tenancy_ocid
+  sensitive = true
 }
 output "compartment-name" {
   value = module.oci-infra.compartment-name

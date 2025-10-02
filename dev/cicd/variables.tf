@@ -1,3 +1,26 @@
+variable "tenancy_ocid" {
+  description = "The OCID of the tenancy"
+  type        = string
+  sensitive   = true
+}
+variable "user_ocid" {
+  description = "The OCID of the user"
+  type        = string
+  sensitive   = true
+}
+variable "fingerprint" {
+  description = "The fingerprint of the user's API key"
+  type        = string
+  sensitive   = true
+}
+variable "private_key" {
+  description = "The path to the private key file"
+  type        = string
+}
+variable "region" {
+  description = "The region to deploy resources in"
+  type        = string
+}
 variable "argocd_chart_version" {
   description = "The Helm release for ArgoCD."
   type        = string
@@ -11,27 +34,27 @@ variable "appset_name" {
   type        = string
 }
 variable "github_org" {
-    description = "The GitHub organization where the repo is located."
-    type        = string
+  description = "The GitHub organization where the repo is located."
+  type        = string
 }
 variable "chart_repo" {
-    description = "The GitHub repository where the Helm charts are located."
-    type        = string
+  description = "The GitHub repository where the Helm charts are located."
+  type        = string
 }
 variable "chart_name" {
-    description = "The name of the Helm chart to deploy."
-    type        = string
+  description = "The name of the Helm chart to deploy."
+  type        = string
 }
 variable "chart_version" {
-    description = "The version of the Helm chart to deploy."
-    type        = string
+  description = "The version of the Helm chart to deploy."
+  type        = string
 }
 variable "kubeconfig_index" {
-    description = "Index to use for the kubeconfig file"
-    type        = number
-    default     = 0
+  description = "Index to use for the kubeconfig file"
+  type        = number
+  default     = 0
 }
 variable "deploy_appsets" {
-    description = "Whether to deploy ArgoCD AppSets"
-    type        = bool
+  description = "Whether to deploy ArgoCD AppSets"
+  type        = bool
 }
