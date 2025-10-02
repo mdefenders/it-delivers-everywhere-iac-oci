@@ -12,3 +12,13 @@ variable "key_name" {
     description = "The name of the Key to create"
     type        = string
 }
+variable "key_shape" {
+    description = "The shape of the Key"
+    type        = string
+    default     = "AES"
+}
+variable "key_length" {
+    description = "The length of the Key"
+    type        = number
+    default     = 32
+}
