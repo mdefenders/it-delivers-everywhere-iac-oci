@@ -1,0 +1,10 @@
+kubernetes_version       = "v1.33.1"
+cluster_name             = "it-delivers-everywhere"
+kubernetes_pod_cidr      = "10.244.0.0/16"
+kubernetes_service_cidr  = "10.96.0.0/16"
+enable_dashboard         = false
+node_pool_name           = "pool1"
+node_image_ocid          = "ocid1.image.oc1.il-jerusalem-1.aaaaaaaat2z3mk4hkage2diewmoz7s23muqllbszw4peqblkd7t2mqnhmufq"
+kubeconfig_index         = 0
+csi_driver_chart_version = "0.4.1"
+csi_chart_version        = "1.5.3"

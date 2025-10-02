@@ -1,0 +1,9 @@
+argocd_chart_version  = "8.2.5"
+appsets_chart_version = "0.1.10"
+appset_name           = "it-delivers-everywhere-features"
+github_org            = "mdefenders"
+chart_repo            = "https://mdefenders.github.io/helmcharts"
+chart_name            = "service-template"
+chart_version         = "0.1.*"
+kubeconfig_index      = 0
+deploy_appsets        = true

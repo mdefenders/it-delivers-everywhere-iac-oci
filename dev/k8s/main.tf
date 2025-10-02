@@ -1,0 +1,19 @@
+module "oci-k8s" {
+  source                   = "git::https://github.com/mdefenders/terraform-oci-k8s.git?ref=v1.0.0"
+  kubernetes_version       = var.kubernetes_version
+  cluster_name             = var.cluster_name
+  compartment_id           = data.terraform_remote_state.infra.outputs.compartment-OCID
+  vcn_id                   = data.terraform_remote_state.infra.outputs.vcn_id
+  enable_dashboard         = var.enable_dashboard
+  kubernetes_pod_cidr      = var.kubernetes_pod_cidr
+  kubernetes_service_cidr  = var.kubernetes_service_cidr
+  vcn_public_subnet_id     = data.terraform_remote_state.infra.outputs.public-subnet-OCID
+  node_pool_name           = var.node_pool_name
+  vcn_private_subnet_id    = data.terraform_remote_state.infra.outputs.private-subnet-OCID
+  node_pool_size           = var.node_pool_size
+  node_shape               = var.node_shape
+  node_image_ocid          = var.node_image_ocid
+  region                   = data.terraform_remote_state.infra.outputs.region
+  csi_driver_chart_version = var.csi_driver_chart_version
+  csi_chart_version        = var.csi_chart_version
+}

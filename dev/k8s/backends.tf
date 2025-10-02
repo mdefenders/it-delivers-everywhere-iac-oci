@@ -1,0 +1,8 @@
+terraform {
+  backend "oci" {
+    bucket               = "adt-terraform-state-buckets"
+    namespace            = "ax4chigfdisp"
+    key                  = "itde/oci/dev/k8s/terraform.tfstate"
+    workspace_key_prefix = "itde/oci/dev/k8s"
+  }
+}
