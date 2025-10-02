@@ -47,9 +47,7 @@ Notes:
 ## Repository Layout
 
 ```
-it-delivers-everywhere/oci/
-  init.sh                 # Creates & enables versioning for the Terraform state bucket
-  envs/
+    init.sh               # Creates & enables versioning for the Terraform state bucket
     dev/
       infra/              # Root module: networking + base infra
       k8s/                # Root module: OKE cluster + node pools
